@@ -7,12 +7,12 @@ import {
   ListItemSecondaryAction,
   ListItemText,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { DispatchContext } from "../Contexts/todos.context";
 import useToggle from "../hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 
-export default function TodoItem({ todo }) {
+function TodoItem({ todo }) {
   const dispatch = useContext(DispatchContext);
   const [isEditing, toggleIsEditing] = useToggle(false);
   return (
@@ -58,3 +58,4 @@ export default function TodoItem({ todo }) {
     </>
   );
 }
+export default memo(TodoItem);
