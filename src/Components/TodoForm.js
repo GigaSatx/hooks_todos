@@ -5,14 +5,14 @@ import useFormInput from "../hooks/useFormInput";
 
 function TodoForm() {
   const [todo, handleTodo, resetTodo] = useFormInput("");
-  const { addTodo } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
 
   return (
     <Paper style={{ margin: "1rem 0" }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          addTodo(todo);
+          dispatch({ type: "add", newTask: todo });
           resetTodo();
         }}
       >

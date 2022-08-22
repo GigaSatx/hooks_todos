@@ -4,13 +4,13 @@ import { TodoContext } from "../Contexts/todos.context";
 import useFormInput from "../hooks/useFormInput";
 
 export default function EditTodoForm({ todo, toggleIsEditing }) {
-  const { editTodo } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
   const [input, handleInput, handleReset] = useFormInput(todo.task);
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        editTodo(input, todo.id);
+        dispatch({ type: "edit", newTask: input, id: todo.id });
         handleReset();
         toggleIsEditing();
       }}

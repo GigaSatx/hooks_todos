@@ -13,7 +13,7 @@ import useToggle from "../hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 
 export default function TodoItem({ todo }) {
-  const { checkTodo, deleteTodo } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
   const [isEditing, toggleIsEditing] = useToggle(false);
   return (
     <>
@@ -25,7 +25,13 @@ export default function TodoItem({ todo }) {
             <Checkbox
               tabIndex="-1"
               checked={todo.completed}
-              onClick={() => checkTodo(todo.id, todo.completed)}
+              onClick={() =>
+                dispatch({
+                  type: "check",
+                  id: todo.id,
+                  completed: todo.completed,
+                })
+              }
             />
             <ListItemText
               style={{
@@ -37,7 +43,7 @@ export default function TodoItem({ todo }) {
             <ListItemSecondaryAction>
               <IconButton
                 aria-label="Delete"
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() => dispatch({ type: "delete", id: todo.id })}
               >
                 <Delete />
               </IconButton>
