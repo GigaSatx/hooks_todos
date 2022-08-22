@@ -7,21 +7,19 @@ import {
   ListItemSecondaryAction,
   ListItemText,
 } from "@mui/material";
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../Contexts/todos.context";
 import useToggle from "../hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 
-export default function TodoItem({ todo, deleteTodo, checkTodo, editTodo }) {
+export default function TodoItem({ todo }) {
+  const { checkTodo, deleteTodo } = useContext(TodoContext);
   const [isEditing, toggleIsEditing] = useToggle(false);
   return (
     <>
       <ListItem>
         {isEditing ? (
-          <EditTodoForm
-            editTodo={editTodo}
-            todo={todo}
-            toggleIsEditing={toggleIsEditing}
-          />
+          <EditTodoForm todo={todo} toggleIsEditing={toggleIsEditing} />
         ) : (
           <>
             <Checkbox

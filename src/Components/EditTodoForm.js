@@ -1,8 +1,10 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../Contexts/todos.context";
 import useFormInput from "../hooks/useFormInput";
 
-export default function EditTodoForm({ todo, editTodo, toggleIsEditing }) {
+export default function EditTodoForm({ todo, toggleIsEditing }) {
+  const { editTodo } = useContext(TodoContext);
   const [input, handleInput, handleReset] = useFormInput(todo.task);
   return (
     <form

@@ -3,16 +3,17 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import useTodo from "../hooks/useTodo";
 import { Typography, Paper, AppBar, Grid, Toolbar } from "@mui/material";
+import { TodoProvider } from "../Contexts/todos.context";
 
 export default function TodoApp() {
   const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
 
-  const { todos, addTodo, deleteTodo, checkTodo, editTodo } =
-    useTodo(initialTodos);
+  // const { todos, addTodo, deleteTodo, checkTodo, editTodo } =
+  //   useTodo(initialTodos);
 
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
 
   return (
     <div>
@@ -32,17 +33,10 @@ export default function TodoApp() {
         </AppBar>
         <Grid container style={{ justifyContent: "center", marginTop: "2rem" }}>
           <Grid item xs={11} sm={9} md={7}>
-            <TodoForm addTodo={addTodo} />
-            {initialTodos.length ? (
-              <TodoList
-                todos={todos}
-                deleteTodo={deleteTodo}
-                checkTodo={checkTodo}
-                editTodo={editTodo}
-              />
-            ) : (
-              <></>
-            )}
+            <TodoProvider>
+              <TodoForm />
+              {initialTodos.length ? <TodoList /> : <></>}
+            </TodoProvider>
           </Grid>
         </Grid>
       </Paper>
