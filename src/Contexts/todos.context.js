@@ -1,6 +1,5 @@
 import React, { createContext, useEffect } from "react";
 import { useReducer } from "react";
-import useTodo from "../hooks/useTodo";
 import todoReducer from "../reducer/todo.reducer";
 
 export const TodoContext = createContext();

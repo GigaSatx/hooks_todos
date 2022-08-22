@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
-import useTodo from "../hooks/useTodo";
 import { Typography, Paper, AppBar, Grid, Toolbar } from "@mui/material";
 import { TodoProvider } from "../Contexts/todos.context";
 
