@@ -7,13 +7,6 @@ import { TodoProvider } from "../Contexts/todos.context";
 export default function TodoApp() {
   const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
 
-  // const { todos, addTodo, deleteTodo, checkTodo, editTodo } =
-  //   useTodo(initialTodos);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("todos", JSON.stringify(todos));
-  // }, [todos]);
-
   return (
     <div>
       <Paper

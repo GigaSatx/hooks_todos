@@ -8,12 +8,12 @@ import {
   ListItemText,
 } from "@mui/material";
 import React, { useContext } from "react";
-import { TodoContext } from "../Contexts/todos.context";
+import { DispatchContext } from "../Contexts/todos.context";
 import useToggle from "../hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 
 export default function TodoItem({ todo }) {
-  const { dispatch } = useContext(TodoContext);
+  const dispatch = useContext(DispatchContext);
   const [isEditing, toggleIsEditing] = useToggle(false);
   return (
     <>

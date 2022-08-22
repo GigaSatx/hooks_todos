@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import { TodoContext } from "../Contexts/todos.context";
 
 export default function TodoList() {
-  const { todos } = useContext(TodoContext);
+  const todos = useContext(TodoContext);
   return (
     <Paper>
       <List>
